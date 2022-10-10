@@ -28,16 +28,19 @@ app.post("/plans", (req, res) => {
   const { blockindex, deposit_amount, userid, depositid, duration, rate } =
     req.body;
 
-  db.collection("investments").add({
-    blockindex: blockindex,
-    deposit_amount: deposit_amount,
-    userid: userid,
-    depositid: depositid,
-    duration: duration,
-    rate: rate,
-    Checkduration: 1,
-  });
-  res.send(req.body);
+  db.collection("investments")
+    .add({
+      blockindex: blockindex,
+      deposit_amount: deposit_amount,
+      userid: userid,
+      depositid: depositid,
+      duration: duration,
+      rate: rate,
+      Checkduration: 1,
+    })
+    .then(() => {
+      res.send(req.body);
+    });
 });
 
 app.get("/ipn", (req, res) => {
@@ -76,10 +79,6 @@ app.get("/ipn", (req, res) => {
               db.doc(`investments/${doc.id}`)
                 .delete()
                 .catch((err) => console.log(err));
-
-              res.send({
-                status: "ok",
-              });
             })
             .catch((err) => console.log(err));
         } else {
@@ -87,14 +86,16 @@ app.get("/ipn", (req, res) => {
             .update({
               Checkduration: Checkduration + 1,
             })
-            .then(() => {
-              res.send({
-                status: "ok",
-              });
-            })
+
             .catch((err) => {
               console.log(err);
             });
+        }
+
+        if (doc.data.length === querySnapshot.size - 1) {
+          res.send({
+            status: "ok",
+          });
         }
       });
     })
