@@ -77,7 +77,9 @@ app.get("/ipn", (req, res) => {
                 .delete()
                 .catch((err) => console.log(err));
 
-              return;
+              res.send({
+                status: "ok",
+              });
             })
             .catch((err) => console.log(err));
         } else {
@@ -85,19 +87,18 @@ app.get("/ipn", (req, res) => {
             .update({
               Checkduration: Checkduration + 1,
             })
+            .then(() => {
+              res.send({
+                status: "ok",
+              });
+            })
             .catch((err) => {
               console.log(err);
             });
         }
       });
-
-      return;
     })
     .catch((err) => console.log(err));
-
-  res.send({
-    status: "ok",
-  });
 });
 
 app.post("/delete", (req, res) => {

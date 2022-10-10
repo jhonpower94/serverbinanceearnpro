@@ -1,11 +1,10 @@
-const admin = require("firebase-admin");
 const express = require("express");
+const { initializeApp, cert } = require("firebase-admin/app");
+const { getFirestore } = require("firebase-admin/firestore");
+const { getAuth } = require("firebase-admin/auth");
 
 const app = express();
-const hostname = "127.0.0.1";
 const port = process.env.PORT || 9000;
-
-const server = require("http").createServer(app);
 
 var cors = require("cors");
 app.use(cors());
@@ -13,18 +12,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 var serviceAccount = require("./config/serviceaccount.json");
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+const init = initializeApp({
+  credential: cert(serviceAccount),
 });
+const db = getFirestore(init);
+const auth = getAuth(init);
 
-const db = admin.firestore();
+const server = require("http").createServer(app);
+server.listen(port, () => {
+  console.log(`server is running on port: ${port}`);
+});
 
 app.post("/plans", (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const { blockindex, deposit_amount, userid, depositid, duration, rate } =
     req.body;
 
-  db.comllection("investments").add({
+  db.collection("investments").add({
     blockindex: blockindex,
     deposit_amount: deposit_amount,
     userid: userid,
@@ -37,7 +41,7 @@ app.post("/plans", (req, res) => {
 });
 
 app.get("/ipn", (req, res) => {
-  db.comllection("investments")
+  db.collection("investments")
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -50,7 +54,7 @@ app.get("/ipn", (req, res) => {
 
         if (Checkduration === duration) {
           db.doc(`users/${doc.data().userid}`)
-            .comllection("deposits")
+            .collection("deposits")
             .doc(doc.data().depositid)
             .update({
               complete: true,
@@ -58,7 +62,7 @@ app.get("/ipn", (req, res) => {
             })
             .then(() => {
               db.doc(`users/${doc.data().userid}`)
-                .comllection("notification")
+                .collection("notification")
                 .add({
                   date: new Date().toLocaleDateString(),
                   time: new Date().toLocaleTimeString(),
@@ -96,6 +100,13 @@ app.get("/ipn", (req, res) => {
   });
 });
 
-server.listen(port, hostname, () => {
-  console.log(`server is running on port: ${port}`);
+app.post("/delete", (req, res) => {
+  const { uid } = req.body;
+
+  auth.deleteUser(uid).catch(function (error) {
+    console.log("Error deleting user", uid, error);
+  });
+  res.send({
+    uid: uid,
+  });
 });
