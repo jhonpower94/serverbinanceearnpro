@@ -91,12 +91,11 @@ app.get("/ipn", (req, res) => {
               console.log(err);
             });
         }
-
-        if (doc.data.length === querySnapshot.size - 1) {
-          res.send({
-            status: "ok",
-          });
-        }
+      });
+    })
+    .then(() => {
+      res.send({
+        status: "ok",
       });
     })
     .catch((err) => console.log(err));
