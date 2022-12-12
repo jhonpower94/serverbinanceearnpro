@@ -7,7 +7,11 @@ const app = express();
 const port = process.env.PORT || 9000;
 
 var cors = require("cors");
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -19,6 +23,14 @@ const db = getFirestore(init);
 const auth = getAuth(init);
 
 const server = require("http").createServer(app);
+
+// const socketIo = require("socket.io");
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+  },
+});
+
 server.listen(port, () => {
   console.log(`server is running on port: ${port}`);
 });
@@ -111,3 +123,65 @@ app.post("/delete", (req, res) => {
     uid: uid,
   });
 });
+
+app.use("/sendmail", require("./sendmail"));
+
+app.get("/", (req, res) => {
+  res.send({ response: "I am alive" }).status(200);
+});
+
+let interval;
+let intervalWithdrawal;
+
+var Fakerator = require("fakerator");
+
+io.on("connection", (socket) => {
+  console.log("New client connected");
+  if (interval) {
+    clearInterval(interval);
+  }
+
+  interval = setInterval(
+    () => getApiAndEmit(socket),
+    Math.floor(Math.random() * 2000) + 1000
+  );
+
+  intervalWithdrawal = setInterval(
+    () => getApiAndEmitWithdrawal(socket),
+    Math.floor(Math.random() * 2000) + 1000
+  );
+
+  socket.on("disconnect", () => {
+    console.log("Client disconnected");
+    clearInterval(interval);
+  });
+});
+
+const getApiAndEmit = (socket) => {
+  var fakerator = Fakerator();
+  const currencies = ["BTC", "USDT", "ETH", "BNB"];
+  const amount = Math.floor(Math.random() * 30000) + 50;
+
+  var depositData = {
+    name: fakerator.names.name(),
+    amount: amount,
+    currency: currencies[Math.floor(Math.random() * currencies.length)],
+  };
+  // Emitting a new message. Will be consumed by the client
+  socket.emit("DepositData", depositData);
+};
+
+const getApiAndEmitWithdrawal = (socket) => {
+  var fakerator = Fakerator();
+  const currencies = ["BTC", "USDT", "ETH", "BNB"];
+  const amount = Math.floor(Math.random() * 30000) + 50;
+
+  var withdrawalData = {
+    name: fakerator.names.name(),
+    amount: amount,
+    currency: currencies[Math.floor(Math.random() * currencies.length)],
+  };
+
+  // Emitting a new message. Will be consumed by the client
+  socket.emit("WithdrawalData", withdrawalData);
+};
