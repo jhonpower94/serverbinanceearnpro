@@ -12,7 +12,7 @@ router.route("/").post((req, res) => {
   async function main() {
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
-  
+
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
       host: "mail.binanceearnpro.online",
@@ -21,7 +21,7 @@ router.route("/").post((req, res) => {
       auth: {
         user: "no-reply@binanceearnpro.online", // generated ethereal user
         pass: "asapdogood@2023", // generated ethereal password
-      }
+      },
     });
 
     const sitename = "Binanceearnpro";
@@ -45,13 +45,16 @@ router.route("/").post((req, res) => {
   }
 
   main()
-    .then((info) => console.log(`${info.messageId}`))
+    .then((info) => {
+      res.send("working");
+      console.log(`${info.messageId}`);
+    })
     .catch((error) => {
-      // res.send(error);
+       res.send(error);
       console.log(error);
     });
 
-  res.send("working");
+ // res.send("working");
 });
 
 module.exports = router;
