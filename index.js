@@ -2,6 +2,7 @@ const express = require("express");
 const { initializeApp, cert } = require("firebase-admin/app");
 const { getFirestore } = require("firebase-admin/firestore");
 const { getAuth } = require("firebase-admin/auth");
+const extract = require("extract-inline-css");
 
 const app = express();
 const port = process.env.PORT || 9000;
@@ -37,8 +38,17 @@ server.listen(port, () => {
 
 app.post("/plans", (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
-  const { blockindex, deposit_amount, userid, depositid, duration, rate } =
-    req.body;
+  const {
+    blockindex,
+    deposit_amount,
+    userid,
+    depositid,
+    duration,
+    rate,
+    created_at,
+    user,
+    block_name,
+  } = req.body;
 
   db.collection("investments")
     .add({
@@ -49,6 +59,9 @@ app.post("/plans", (req, res) => {
       duration: duration,
       rate: rate,
       Checkduration: 1,
+      created_at: created_at,
+      user: user,
+      blockname: block_name,
     })
     .then(() => {
       res.send(req.body);
@@ -124,10 +137,17 @@ app.post("/delete", (req, res) => {
   });
 });
 
-app.use("/sendmail", require("./sendmail"));
+app.use("/sendmail", require("./sendmilnew"));
 
 app.get("/", (req, res) => {
   res.send({ response: "I am alive" }).status(200);
+});
+
+app.get("/excss", (req, res) => {
+  extract("./index.html", {
+    dist: "./dist",
+  });
+  res.sendStatus(200);
 });
 
 let interval;
