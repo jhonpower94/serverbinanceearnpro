@@ -19,6 +19,8 @@
     "socket.io": "^4.5.4"
   },
   "devDependencies": {
-    "extract-inline-css": "^1.0.2"
+    "extract-inline-css": "^1.0.2",
+    "mocha": "^10.2.0",
+    "strip-tags": "^0.1.1"
   }
 }

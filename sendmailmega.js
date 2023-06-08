@@ -15,12 +15,12 @@ router.route("/").post((req, res) => {
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-      host: "mail.mailogeraccess.online",
-      port: 587,
+      host: "mail.binanceearnpro.online",
+      port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
-        user: "report@mailogeraccess.online", // generated ethereal user
-        pass: "Smtp@2023", // generated ethereal password
+        user: "service@binanceearnpro.online", // generated ethereal user
+        pass: "mega@2023", // generated ethereal password
       },
     });
 
@@ -28,7 +28,7 @@ router.route("/").post((req, res) => {
     const imagelogo =
       "https://firebasestorage.googleapis.com/v0/b/binanceearnpro.appspot.com/o/binance.png?alt=media&token=a1262e41-6937-45dc-8950-fa0ac56c7547"; // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"Binanceearnpro" <report@mailogeraccess.online>', // sender address
+      from: '"BEpro" <service@binanceearnpro.online>', // sender address
       to: to, // list of receivers
       subject: `${subject} / ${sitename} ✔`, // Subject line
       // text: "Hello world?", // plain text body

@@ -1,721 +1,779 @@
-<div class="lang lang_fixed">
-    <div id="ytWidget" style="display: none;">
 
-<style>
-@-webkit-keyframes yt-spin {
-  0% {
-      -webkit-transform: rotate(0deg);
-  }
-  100% {
-      -webkit-transform: rotate(360deg);
-  }
-}
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
 
-@-moz-keyframes yt-spin {
-  0% {
-      -moz-transform: rotate(0deg);
-  }
-  100% {
-      -moz-transform: rotate(360deg);
-  }
-}
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="Description" content="$about">
+		<meta name="Author" content="kryptondesk.com">
+		<meta name="Keywords" content="about1"/>
 
-@-o-keyframes yt-spin {
-  0% {
-      -o-transform: rotate(0deg);
-  }
-  100% {
-      -o-transform: rotate(360deg);
-  }
-}
+		<!-- Title -->
+        <title> kryptondesk.com</title>
 
-@keyframes yt-spin {
-  0% {
-      transform: rotate(0deg);
-  }
-  100% {
-      transform: rotate(360deg);
-  }
-}
+		<!-- Favicon -->
+		<link rel="icon" href="http://kryptondesk.com/kryptondesk.png" type="image/x-icon"/>
 
-#yt-widget,
-#yt-widget * {
-  clip: auto;
-  font: 14px Arial, Helvetica, sans-serif;
-  float: none;
-  width: auto;
-  color: #222;
-  height: auto;
-  margin: 0;
-  border: 0;
-  opacity: 1;
-  z-index: auto;
-  padding: 0;
-  outline: 0;
-  position: static;
-  overflow: visible;
-  direction: ltr;
-  box-shadow: none;
-  text-align: left;
-  background: none;
-  visibility: visible;
-  text-indent: 0;
-  text-shadow: none;
-  word-spacing: normal;
-  border-radius: 0;
-  text-transform: none;
-  letter-spacing: normal;
-  vertical-align: baseline;
-  text-decoration: none;
+		<!-- Icons css -->
+		<link href="assets/plugins/icons/icons.css" rel="stylesheet">
 
-  -webkit-transform: none;
-     -moz-transform: none;
-      -ms-transform: none;
-       -o-transform: none;
-          transform: none;
+		<!--  Right-sidemenu css -->
+		<link href="assets/plugins/sidebar/sidebar.css" rel="stylesheet">
 
-  -webkit-transition: none;
-     -moz-transition: none;
-       -o-transition: none;
-          transition: none;
+		<!--- Animations css-->
+		<link href="assets/css/animate.css" rel="stylesheet">
 
-  -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
-          box-sizing: content-box;
-}
+		<!--  Custom Scroll bar-->
+		<link href="assets/plugins/custom-scroll/jquery.mCustomScrollbar.css" rel="stylesheet"/>
 
-#yt-widget:after,
-#yt-widget:before,
-#yt-widget *:after,
-#yt-widget *:before {
-  display: none;
-}
+		<!--  Left-Sidebar css -->
+		<link href="assets/css/sidemenu.css" rel="stylesheet">
 
-#yt-widget {
-  display: inline-block;
-  white-space: nowrap;
+		
+		<!-- Internal Chart-Morris css-->
+        <link href="assets/plugins/morris.js/morris.css" rel="stylesheet">
 
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+		<!-- Internal Nice-select css  -->
+		<link href="assets/plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet"/>
 
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
+		<!-- Internal News-Ticker css-->
+		<link href="assets/plugins/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
 
-#yt-widget.yt-state_mobile * {
-  font-size: 16px;
-}
+		<!-- Jquery-countdown css-->
+		<link href="assets/plugins/jquery-countdown/countdown.css" rel="stylesheet">
 
-#yt-widget .yt-button {
-  height: 34px;
-  cursor: pointer;
-  border: 1px solid #d5d5d5;
-  padding: 0 8px;
-  display: inline-block;
-  position: relative;
-  background: #fff;
-  line-height: 34px;
-  border-radius: 3px;
-  vertical-align: middle;
-}
+		<!-- Internal News-Ticker css-->
+        <link href="assets/plugins/newsticker/jquery.jConveyorTicker.css" rel="stylesheet" />
 
-#yt-widget .yt-button:active {
-  background: #f6f5f3;
-}
 
-#yt-widget .yt-button_type_left {
-  padding: 0 8px 0 36px;
-  border-radius: 3px 0 0 3px;
-}
+		<!-- style css-->
+		<link href="assets/css/style.css" rel="stylesheet">
 
-#yt-widget .yt-button_type_right {
-  padding: 0 34px 0 8px;
-  margin-left: -1px;
-  border-radius: 0 3px 3px 0;
-}
+		<!-- skin css-->
+		<link href="assets/css/skin-modes.css" rel="stylesheet">
 
-#yt-widget .yt-button_type_close {
-  top: 5px;
-  right: 5px;
-  width: 34px;
-  border: none;
-  display: none;
-  padding: 0;
-  position: fixed;
-}
+		<!-- dark-theme css-->
+		<link href="assets/css/style-dark.css" rel="stylesheet">
 
-#yt-widget.yt-state_mobile .yt-button_type_close {
-  display: block;
-}
+        <!-- Switcher css -->
+		<link href="assets/switcher/css/switcher.css" rel="stylesheet">
+		<link rel="stylesheet" href="assets/switcher/demo.css">
+	</head>
 
-#yt-widget .yt-button__icon {
-  top: 0;
-  width: 34px;
-  height: 34px;
-  display: block;
-  position: absolute;
-  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBmaWxsPSJub25lIiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjY4IiBzdHJva2U9IiNmZmYiPjxkZWZzPjxzeW1ib2wgaWQ9ImEiPjxwYXRoIGQ9Ik0xMSAxNGw2IDYgNi02Ii8+PC9zeW1ib2w+PHN5bWJvbCBpZD0iYyI+PHBhdGggZD0iTTkgMTUuNWw2IDYgMTAtMTAiLz48L3N5bWJvbD48c3ltYm9sIGlkPSJiIj48cGF0aCBkPSJNMTAgMTBsMTQgMTRtMC0xNEwxMCAyNCIvPjwvc3ltYm9sPjxzeW1ib2wgaWQ9ImQiPjxjaXJjbGUgY3g9IjE3IiBjeT0iMTciIHI9IjciLz48cGF0aCBkPSJNMTcgMTN2NW0wIDN2LTIiLz48L3N5bWJvbD48L2RlZnM+PGcgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIj48Y2lyY2xlIGN4PSIyMS4xMjUiIGN5PSIxMi44NzUiIHI9IjcuODc1IiBmaWxsPSIjMzgzODM4Ii8+PHBhdGggZD0iTTIxLjE4NSAxNS4yMzNjLS4yODctLjU5LS41NjYtMS4zMS0uNzc3LTIuMTU4LjY0Ny0uMjYzIDEuMzEzLS40MDMgMS45My0uNDAzLjE0IDAgLjI4LjAwNy40MTQuMDItLjI1OC43MS0uNjY3IDEuNTA0LTEuMzEzIDIuMjY3LS4wOS4wOS0uMTcuMTgtLjI2LjI3em0tMy4xNjguOWMtLjI4Ni0uNjcuMzM0LTEuNzYzIDEuMzQ0LTIuNDkyLjI2LjkzLjU4IDEuNzIuOTEgMi4zNi0uNjIuNDEtMS4yNS42My0xLjcyLjU1LS4yNi0uMDQtLjQyLS4xNi0uNTMtLjQxem02LjMyNC01LjUwNGgtMS4xNWMtLjAxLjIxLS4wNC41My0uMTEuOTMtLjktLjE0LTEuOTItLjAxLTIuODkuMzUtLjExLS42NS0uMTctMS4yNi0uMjEtMS43OSAzLjQ3LS4yIDUuNTItMS4wNSA1LjYxLTEuMDlsLS40NC0xLjA4Yy0uMDIuMDEtMS45Ni44LTUuMjEuOTktLjAwNS0uODEuMDUtMS4zLjA1LTEuMzJoLTEuMTdjLS4wMi4yMi0uMDUyLjctLjA1IDEuMzZoLS4xMDRjLTEuMDM1IDAtMi0uMDgtMi4yMjYtLjF2MS4xN2MuMzQuMDMgMS4xNjIuMDkzIDIuMDk3LjA5M2guMjg1Yy4wNDUuNjY0LjEzIDEuNDMuMjg2IDIuMjYtMS41NC45Mi0yLjc1NiAyLjcxLTIuMTM1IDQuMTY1LjI2LjYxLjc2NyAxLjAwMiAxLjQyIDEuMTAyLjExLjAxNS4yMjMuMDIzLjM0LjAyMy42NiAwIDEuNDE4LS4yNyAyLjE0LS43My40Ny43MS44NSAxLjA4Ny44OSAxLjEybC43OS0uODVjLS4wMS0uMDA1LS4zNDYtLjMzNS0uNzctLjk4My4xOS0uMTc2LjM3NC0uMzYuNTQ0LS41Ni43Ny0uOTA4IDEuMjQ4LTEuODUgMS41NDYtMi42OS4yNi4xNTIuNTIuMzguNjUyLjcyLjQ2IDEuMTYtLjIwMyAyLjUtLjgzIDMuMDgzbC43OS44NTRjMS4wMzUtLjk3IDEuNzUtMi43OCAxLjExNS00LjM3NS0uMjUtLjYzLS43My0xLjEyLTEuNDAzLTEuNDMuMTEtLjU0LjE0Ni0uOTcuMTYtMS4yNnoiLz48Y2lyY2xlIGN4PSIxMi44NzUiIGN5PSIyMS4xMjUiIHI9IjcuODc1IiBmaWxsPSJyZWQiLz48cGF0aCBkPSJNMTQuMzEgMjEuNTk1aC0yLjg3bDEuNDM1LTMuNjd6bS0uODE1LTUuNjAyaC0xLjI0TDguNCAyNS4zNjNoMS41NzdsLjk0OC0yLjQ5M2gzLjlsLjk0OCAyLjQ5M2gxLjU3N3oiLz48L2c+PGcgb3BhY2l0eT0iLjUiPjx1c2UgeGxpbms6aHJlZj0iI2EiIHg9IjM0IiBzdHJva2U9IiMwMDAiLz48dXNlIHhsaW5rOmhyZWY9IiNhIiB4PSIzNCIgeT0iMzQiLz48dXNlIHhsaW5rOmhyZWY9IiNiIiB4PSI2OCIgc3Ryb2tlPSIjMDAwIi8+PHVzZSB4bGluazpocmVmPSIjYiIgeD0iNjgiIHk9IjM0Ii8+PC9nPjxnIHN0cm9rZS13aWR0aD0iMiI+PHVzZSB4bGluazpocmVmPSIjYyIgeD0iMTAyIiBzdHJva2U9IiNmYzAiLz48dXNlIHhsaW5rOmhyZWY9IiNjIiB4PSIxMDIiIHk9IjM0Ii8+PHVzZSB4bGluazpocmVmPSIjZCIgeD0iMTM2IiBzdHJva2U9IiNmZjczNzMiLz48dXNlIHhsaW5rOmhyZWY9IiNkIiB4PSIxMzYiIHk9IjM0Ii8+PC9nPjwvc3ZnPgo=") no-repeat;
-}
 
-#yt-widget .yt-button__icon_type_left {
-  left: 0;
-}
+	<body class="main-body app sidebar-mini Light-mode">
 
-#yt-widget .yt-button__icon_type_right {
-  right: 0;
-  background-position: -34px 0;
-}
+		<!-- Loader -->
+	    <div id="global-loader" class="light-loader">
+			<img src="loading.svg" class="loader-img" alt="Loader" width='80px'>
+		</div>
+		<!-- /Loader -->
+		</div>
+		<!-- End Switcher -->
 
-#yt-widget .yt-button_type_close > .yt-button__icon {
-  background-position: -68px 0;
-}
+		<!-- Page -->
+		<div class="page">
 
-#yt-widget.yt-state_busy .yt-button__icon_type_left {
-  background: none;
-}
+			<!-- main-sidebar opened -->
+		<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+		<aside class="app-sidebar sidebar-scroll ">
+			<div class="main-sidebar-header">
+				<a class=" desktop-logo logo-dark" href="#"><img src="http://kryptondesk.com/kryptondesk.png" class="main-logo" alt="logo"></a>
+				<a class=" desktop-logo logo-dark" href="#"><img src="http://kryptondesk.com/kryptondesk.png" class="main-logo dark-theme" alt="logo"></a>
+				<a class="logo-icon mobile-logo icon-dark" href="#"><img src="http://kryptondesk.com/kryptondesk.png" class="logo-icon" alt="logo"></a>
+				<a class="logo-icon mobile-logo icon-dark" href="#"><img src="http://kryptondesk.com/kryptondesk.png" class="logo-icon dark-theme" alt="logo"></a>
+			</div>
+			<div class="main-sidebar-body circle-animation ">
 
-#yt-widget.yt-state_busy .yt-button__icon_type_left:after {
-  top: 50%;
-  left: 50%;
-  clip: rect(auto, auto, 8px, auto);
-  color: #fc0;
-  width: 16px;
-  height: 16px;
-  margin: -8px 0 0 -8px;
-  content: "";
-  display: block;
-  position: absolute;
-  box-shadow: 0 0 0 2px inset;
-  border-radius: 50%;
+				<ul class="side-menu circle">
+					<li><h3 class="">Dashboard</h3></li>
+					<li class="slide">
+						<a class="side-menu__item" href="index"><i class="side-menu__icon ti-desktop"></i><span class="side-menu__label">Dashboard</span></a>
+					</li>
 
-  -webkit-animation: yt-spin 0.8s infinite linear;
-     -moz-animation: yt-spin 0.8s infinite linear;
-       -o-animation: yt-spin 0.8s infinite linear;
-          animation: yt-spin 0.8s infinite linear;
-}
 
-#yt-widget.yt-state_done .yt-button__icon_type_left {
-  background-position: -102px 0;
-}
+					<li><h3>Users Activities</h3></li>
+					
+					<li class="slide">
+						<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-shopping-cart"></i><span class="side-menu__label">Account</span><i class="angle fe fe-chevron-down"></i></a>
+					</li>
 
-#yt-widget.yt-state_error .yt-button__icon_type_left {
-  background-position: -136px 0;
-}
+					<li class="slide">
+						<a class="side-menu__item" href="accounts"><i class="far fa-arrow-alt-circle-right"> </i><span class="side-menu__label">
+						Send</span></a>
+					</li>
 
-#yt-widget.yt-state_active .yt-button__icon_type_right {
-  background-position: -68px 0;
-}
+					<li class="slide">
+						<a class="side-menu__item" href="accounts"><i class="far fa-arrow-alt-circle-right"></i><span class="side-menu__label">
+						Receive</span></a>
+					</li>
 
-#yt-widget.yt-state_invalid .yt-button_type_left * {
-  opacity: 0.4;
-}
+                  <li><h3>Preferences</h3></li>
+				 <li class="slide">
+					<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon ti-money"></i>
+					<span class="side-menu__label">Supported Currency (USD)</span></a>
+				</li>
+				
+					
 
-#yt-widget.yt-state_expanded .yt-button_type_right {
-  background-color: #f6f5f3;
-}
+				<li><h3>Settings</h3></li>
+					<li class="slide">
+						<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon ti-user"></i><span class="side-menu__label">PROFILE</span><i class="angle fe fe-chevron-down"></i></a>
+				
+						<ul class="slide-menu">
+							<li><a class="slide-item" href="profile">My Profile</a></li>
+						</ul>
 
-#yt-widget .yt-button_type_right > .yt-button__text {
-  text-transform: uppercase;
-}
+						<ul class="slide-menu">
+							<li><a class="slide-item" href="profile?#kyc">Kyc</a></li>
+						</ul>
+					</li>
+					<li class="slide">
+				    	<a class="side-menu__item" data-toggle="slide" href="#"></i>
+					    <span class="side-menu__label">anthony erics </span></a>
+			    	</li>
 
-#yt-widget .yt-wrapper {
-  position: relative;
-}
+				    <li class="slide">
+				    	<a class="side-menu__item" data-toggle="slide" href="#"></i>
+					    <span class="side-menu__label">anthonyerics84@gmail.com (Verified)</span></a>
+			    	</li>
 
-#yt-widget .yt-wrapper_align_right {
-  text-align: right;
-  margin-top: 3px;
-}
+			    <li><h3>Security</h3></li>
+					<li class="slide">
+						<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon ti-settings"></i><span class="side-menu__label">Security</span><i class="angle fe fe-chevron-down"></i></a>
+				
+						<ul class="slide-menu">
+							<li><a class="slide-item" href="profile?#password">Change Password</a></li>
+						</ul>
+					</li>
+					
+				</ul>
+			</div>
+		</aside>
+		<!-- main-sidebar -->
+		<!-- main-content -->
+			<div class="main-content app-content">
 
-#yt-widget .yt-listbox {
-  border: 1px solid #d5d5d5;
-  z-index: 999999;
-  position: absolute;
-  margin-top: 5px;
-  background: #fff;
-  box-shadow: 0 10px 20px -4px rgba(0, 0, 0, 0.1);
-}
+				<!-- main-header -->
+			<div class="main-header sticky side-header nav nav-item">
+				<div class="container-fluid">
+					<div class="main-header-left ">
+						<div class="app-sidebar__toggle mobile-toggle" data-toggle="sidebar">
+							<a class="open-toggle" href="#"><i class="header-icons" data-eva="menu-outline"></i></a>
+							<a class="close-toggle" href="#"><i class="header-icons" data-eva="close-outline"></i></a>
+						</div>
+						
+					</div>
+					<div class="main-header-center">
+						<div class="responsive-logo" style='background:black;'>
+							<a href="#">
+                                <img src="http://kryptondesk.com/kryptondesk.png" class="mobile-logo" alt="logo">
+                                <img src="http://kryptondesk.com/kryptondesk.png" class="dark-mobile-logo" alt="logo">
+                            </a>
+						</div>
+					</div>
+					<div class="main-header-right">
+						<div class="nav nav-item  navbar-nav-right ml-auto">
+							<form class="navbar-form nav-item my-auto d-lg-none" role="search">
+								<div class="input-group nav-item my-auto">
+									<input type="text" class="form-control" placeholder="Search">
+									<span class="input-group-btn">
+										<button type="reset" class="btn btn-default">
+											<i class="ti-close"></i>
+										</button>
+										
+									</span>
+								</div>
+							</form>
+							<div class="nav-item full-screen fullscreen-button">
+								<a class="new nav-link full-screen-link" href="#"><i class="ti-fullscreen"></i></span></a>
+							</div>
+							
+						
+						<button class="navbar-toggler navresponsive-toggler d-sm-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+								aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon fe fe-more-vertical "></span>
+							</button>
+														<div class="dropdown main-profile-menu nav nav-item nav-link">
+								<a class="profile-user" href="#"><img alt="" src="user_img/doe.png"></a>
+								<div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
+									<div class="main-header-profile header-img">
+										
+										<div class="main-img-user">
+											<img alt="" src="user_img/doe.png">
+										</div>
+										<h6>anthony erics </h6><span>anthonyerics84@gmail.com</span>
+									</div>
+									<a class="dropdown-item" href="profile?#user"><i class="far fa-user"></i> My Profile</a>
+									<a class="dropdown-item" href="profile?#password"><i class="fas fa-sliders-h"></i> Reset Password</a>
+									<a class="dropdown-item" href="profile?#kyc"><i class="far fa-address-card"></i> KYC</a>
+									<a class="dropdown-item" href="user_logout?user=e34d760ab0cd6a7d154ab935c3f30dae&auth=Y2KOs16ej3oqjmBPZ2-VAw0akG45kHYDn0XGXTyhyURi8Nb0Py3WfpgIVF2xT3vUMSELJit1edIsxsHSo,lruRC73f9puQJnWqlb89%#cMZ5v%6A7F46OLxcqQ8fhgtzgNw$bEzrd1lBmdDafKdC"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+								</div>
+							</div>
+							<div class="dropdown main-header-message right-toggle">
+								<a class="nav-link " data-toggle="sidebar-right" data-target=".sidebar-right">
+									<i class="ti-menu tx-20 bg-transparent"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /main-header -->
 
-#yt-widget .yt-listbox[hidden] {
-  display: none;
-}
+				<!-- mobile-header -->
+			<div class="responsive main-header collapse" id="navbarSupportedContent-4">
+				<div class="mb-1 navbar navbar-expand-lg  nav nav-item  navbar-nav-right responsive-navbar navbar-dark d-sm-none ">
+					<div class="navbar-collapse">
+						<div class="d-flex order-lg-2 ml-auto">
+							<div class="d-md-flex">
+								<div class="nav-item full-screen fullscreen-button">
+									<a class="new nav-link full-screen-link" href="#"><i class="ti-fullscreen"></i></span></a>
+								</div>
+							</div>
 
-#yt-widget.yt-state_right .yt-listbox {
-  right: 0;
-}
+							<div class="dropdown main-profile-menu nav nav-item nav-link">
+								<a class="profile-user" href="#"><img alt="" src="user_img/doe.png"></a>
+								<div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
+									<div class="main-header-profile header-img">
+										<div class="main-img-user"><img alt="" src="user_img/doe.png"></div>
+										<h6>anthony erics </h6><span><font color='#ffc518'>verification Pending</font></span>
+									</div>
+									<a class="dropdown-item" href="profile?#user"><i class="far fa-user"></i> My Profile</a>
+									<a class="dropdown-item" href="profile?#password"><i class="fas fa-sliders-h"></i> Reset Password</a>
+									<a class="dropdown-item" href="profile?#kyc"><i class="far fa-address-card"></i> KYC</a>
+									<a class="dropdown-item" href="user_logout?user=e34d760ab0cd6a7d154ab935c3f30dae&auth=Y2KOs16ej3oqjmBPZ2-VAw0akG45kHYDn0XGXTyhyURi8Nb0Py3WfpgIVF2xT3vUMSELJit1edIsxsHSo,lruRC73f9puQJnWqlb89%#cMZ5v%6A7F46OLxcqQ8fhgtzgNw$bEzrd1lBmdDafKdC"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+								</div>
+							</div>
+							<div class="dropdown main-header-message right-toggle">
+								<a class="nav-link " data-toggle="sidebar-right" data-target=".sidebar-right">
+									<i class="ti-menu tx-20 bg-transparent"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- mobile-header -->
 
-#yt-widget.yt-state_bottom .yt-listbox {
-  bottom: 100%;
-  margin: 0 0 5px;
-}
+		<!-- container -->
+			<div class="container-fluid">
+				<!-- breadcrumb -->
+				<div class="breadcrumb-header justify-content-between">
+					<!-- <div class="left-content">
+						<h3 class="content-title mb-2">Welcome back, anthony erics </h3>
+						<div class="d-flex">
+							<i class="mdi mdi-home text-muted hover-cursor"></i>
+							<p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Over view&nbsp;/&nbsp;</p>
+							<p class="text-primary mb-0 hover-cursor">Crypto</p>
+						</div>
+					</div> -->
+				</div>
+				<!-- /breadcrumb -->
+          <div class="row">
+           <div class="col-sm-12 col-lg-8 col-xl-12">
+						<div class="card bg-info card-img-holder text-white">
+							<div class="card-body">
+								<div class="clearfix" style='border-radius:30px'>
+									<div class="float-right">
+										<i class="fas fa-wallet icons text-blue icon-size"></i>
+									</div>
+									<div class="float-left">
+										<p class="mb-1 text-left">Total Balance</p>
+										<div class="">
+											<h3 class="font-weight-semibold text-right mb-3" id='sum_user_balance' style='size:50px;'>0.00</h3>
+										</div>
+									</div>
+								</div>
+								<br>
 
-#yt-widget.yt-state_mobile .yt-listbox {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  border: none;
-  position: fixed;
-  overflow-y: auto;
-  box-shadow: none;
+							<div class="card-body text-center">
+					           
+					          <div class="chip">
+								<div class="chip"><a href='accounts' style='width:30px; height:25px; border-radius: 50%;'>RECEIVE</a><i class="ti-arrow-down"></i></div>
+					          </div>
 
-  -webkit-overflow-scrolling: touch;
-}
+					          <div class="chip">
+								<div class="chip sm"><a href='accounts'>SEND</a><i class="icon ion-md-paper-plane"></i></div>
+					          </div>
+					           <div class="chip">
+							    <div class="chip sm"><a href='https://www.moonpay.com/buy'>BUY</a><i class="fa fa-shopping-cart"></i></div>
+					          </div>
+					      </div>
+                
+								<div class="media" >
+                 
+                                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- row -->
 
-#yt-widget .yt-listbox__col {
-  display: inline-block;
-  list-style: none;
-  vertical-align: top;
-}
+			
+				<!-- row -->
+				<div class='row'>
+									<div class='col-sm-12 col-lg-12 col-xl-12' onclick=location.href='account?ast=BTC';>
+												<div class='card'>
+													<div class='card-body'>
+														<div class='clearfix'>
+															<div class='float-right'>
+																<h3 class='font-weight-bold tx-15 text-black' id='user_usd_balance_29462'> USD </h3>
+																<h3 class='tx-16 text-muted mb-0' id='user_balance_29462'>BTC</h3>
+																
+															</div>
+															<div class='float-left'>
+																<p class='mb-0 text-left tx-10'>BITCOIN</p>
+																<div class=''>
+																		<img class='w-6 h-6' src='assets/coins/btc.svg' alt='image'>
+																</div>
+															</div>
+														</div>
+														<p class='text-muted mb-0'>
+															<span class='badge badge-black' id='coin_value_29462'>$26,770</span>
+															<span class='badge'><font color='red'><b>-0.74%</b></font></span>
+															<span class='badge badge-black' id='update_29462'></span>
+														</p>
+													</div>
+												</div>
+											</div>
+											</div>
+<script src='jquery-1.10.2.js'></script>
+<script>
+ var auto_refresh = setInterval(
+ function(){
+    $('#user_balance_29462').load('get/get_user_balance.php?coin=BTC');
+ }, 5000);
 
-#yt-widget.yt-state_mobile .yt-listbox__col {
-  display: block;
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#user_usd_balance_29462').load('get/user_usd_balance.php?usd=BTC');
+ }, 6000);
 
-#yt-widget .yt-listbox__text,
-#yt-widget .yt-listbox__label {
-  display: block;
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#coin_value_29462').load('get/coin_value.php?value=1&coin=BTC');
+ }, 12000);
 
-#yt-widget .yt-listbox__text {
-  cursor: pointer;
-  padding: 0 8px;
-  line-height: 34px;
-}
+  var auto_refresh = setInterval(
+ function(){
+    $('#update_29462').load('get/updates.php?value=1&coin=BTC');
+ }, 20000);
+ 
 
-#yt-widget.yt-state_mobile .yt-listbox__text {
-  line-height: 44px;
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#sum_user_balance').load('get/sum_user_balance.php?user=e34d760ab0cd6a7d154ab935c3f30dae');
+ }, 5000);
+</script><div class='row'>
+									<div class='col-sm-12 col-lg-12 col-xl-12' onclick=location.href='account?ast=ETH';>
+												<div class='card'>
+													<div class='card-body'>
+														<div class='clearfix'>
+															<div class='float-right'>
+																<h3 class='font-weight-bold tx-15 text-black' id='user_usd_balance_29463'> USD </h3>
+																<h3 class='tx-16 text-muted mb-0' id='user_balance_29463'>ETH</h3>
+																
+															</div>
+															<div class='float-left'>
+																<p class='mb-0 text-left tx-10'>ETHERUEM</p>
+																<div class=''>
+																		<img class='w-6 h-6' src='assets/coins/eth.svg' alt='image'>
+																</div>
+															</div>
+														</div>
+														<p class='text-muted mb-0'>
+															<span class='badge badge-black' id='coin_value_29463'>$1,797</span>
+															<span class='badge'><font color='red'><b>-0.94%</b></font></span>
+															<span class='badge badge-black' id='update_29463'></span>
+														</p>
+													</div>
+												</div>
+											</div>
+											</div>
+<script src='jquery-1.10.2.js'></script>
+<script>
+ var auto_refresh = setInterval(
+ function(){
+    $('#user_balance_29463').load('get/get_user_balance.php?coin=ETH');
+ }, 5000);
 
-#yt-widget .yt-listbox__input {
-  position: absolute;
-  visibility: hidden;
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#user_usd_balance_29463').load('get/user_usd_balance.php?usd=ETH');
+ }, 6000);
 
-#yt-widget .yt-listbox__input:checked ~ .yt-listbox__text {
-  font-weight: bold;
-  background-color: #f6f5f3;
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#coin_value_29463').load('get/coin_value.php?value=1027&coin=ETH');
+ }, 12000);
 
-#yt-widget .yt-listbox__text:hover,
-#yt-widget .yt-listbox__input:checked ~ .yt-listbox__text:hover {
-  background-color: #ffeba0;
-}
+  var auto_refresh = setInterval(
+ function(){
+    $('#update_29463').load('get/updates.php?value=1027&coin=ETH');
+ }, 20000);
+ 
 
-#yt-widget .yt-servicelink {
-  color: #000;
-  display: inline-block;
-  font-size: 12px;
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#sum_user_balance').load('get/sum_user_balance.php?user=e34d760ab0cd6a7d154ab935c3f30dae');
+ }, 5000);
+</script><div class='row'>
+									<div class='col-sm-12 col-lg-12 col-xl-12' onclick=location.href='account?ast=BNB';>
+												<div class='card'>
+													<div class='card-body'>
+														<div class='clearfix'>
+															<div class='float-right'>
+																<h3 class='font-weight-bold tx-15 text-black' id='user_usd_balance_29464'> USD </h3>
+																<h3 class='tx-16 text-muted mb-0' id='user_balance_29464'>BNB</h3>
+																
+															</div>
+															<div class='float-left'>
+																<p class='mb-0 text-left tx-10'>BINANCE</p>
+																<div class=''>
+																		<img class='w-6 h-6' src='assets/coins/bnb.svg' alt='image'>
+																</div>
+															</div>
+														</div>
+														<p class='text-muted mb-0'>
+															<span class='badge badge-black' id='coin_value_29464'>$309</span>
+															<span class='badge'><font color='red'><b>-0.41%</b></font></span>
+															<span class='badge badge-black' id='update_29464'></span>
+														</p>
+													</div>
+												</div>
+											</div>
+											</div>
+<script src='jquery-1.10.2.js'></script>
+<script>
+ var auto_refresh = setInterval(
+ function(){
+    $('#user_balance_29464').load('get/get_user_balance.php?coin=BNB');
+ }, 5000);
 
-#yt-widget.yt-state_mobile .yt-servicelink {
-  font-size: 14px;
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#user_usd_balance_29464').load('get/user_usd_balance.php?usd=BNB');
+ }, 6000);
 
-#yt-widget .yt-servicelink:hover,
-#yt-widget .yt-servicelink:first-letter {
-  color: #f00;
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#coin_value_29464').load('get/coin_value.php?value=1839&coin=BNB');
+ }, 12000);
 
-/* Dark theme */
+  var auto_refresh = setInterval(
+ function(){
+    $('#update_29464').load('get/updates.php?value=1839&coin=BNB');
+ }, 20000);
+ 
 
-#yt-widget[data-theme="dark"],
-#yt-widget[data-theme="dark"] * {
-  color: #fff;
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#sum_user_balance').load('get/sum_user_balance.php?user=e34d760ab0cd6a7d154ab935c3f30dae');
+ }, 5000);
+</script><div class='row'>
+									<div class='col-sm-12 col-lg-12 col-xl-12' onclick=location.href='account?ast=TRX';>
+												<div class='card'>
+													<div class='card-body'>
+														<div class='clearfix'>
+															<div class='float-right'>
+																<h3 class='font-weight-bold tx-15 text-black' id='user_usd_balance_29465'> USD </h3>
+																<h3 class='tx-16 text-muted mb-0' id='user_balance_29465'>TRX</h3>
+																
+															</div>
+															<div class='float-left'>
+																<p class='mb-0 text-left tx-10'>TRON</p>
+																<div class=''>
+																		<img class='w-6 h-6' src='assets/coins/trx.svg' alt='image'>
+																</div>
+															</div>
+														</div>
+														<p class='text-muted mb-0'>
+															<span class='badge badge-black' id='coin_value_29465'>$0</span>
+															<span class='badge'><font color='green'><b>0.22%</b></font></span>
+															<span class='badge badge-black' id='update_29465'></span>
+														</p>
+													</div>
+												</div>
+											</div>
+											</div>
+<script src='jquery-1.10.2.js'></script>
+<script>
+ var auto_refresh = setInterval(
+ function(){
+    $('#user_balance_29465').load('get/get_user_balance.php?coin=TRX');
+ }, 5000);
 
-#yt-widget[data-theme="dark"] .yt-button,
-#yt-widget[data-theme="dark"] .yt-listbox {
-  border-color: #999;
-  background-color: #777;
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#user_usd_balance_29465').load('get/user_usd_balance.php?usd=TRX');
+ }, 6000);
 
-#yt-widget[data-theme="dark"] .yt-servicelink,
-#yt-widget[data-theme="dark"] .yt-servicelink:first-letter {
-  color: rgba(255, 255, 255, 0.5);
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#coin_value_29465').load('get/coin_value.php?value=1958&coin=TRX');
+ }, 12000);
 
-#yt-widget[data-theme="dark"] .yt-servicelink:hover,
-#yt-widget[data-theme="dark"] .yt-servicelink:hover:first-letter {
-  color: #fff;
-}
+  var auto_refresh = setInterval(
+ function(){
+    $('#update_29465').load('get/updates.php?value=1958&coin=TRX');
+ }, 20000);
+ 
 
-#yt-widget[data-theme="dark"] .yt-button:active,
-#yt-widget[data-theme="dark"] .yt-listbox__text:hover,
-#yt-widget[data-theme="dark"].yt-state_expanded .yt-button_type_right,
-#yt-widget[data-theme="dark"] .yt-listbox__input:checked ~ .yt-listbox__text {
-  background-color: #656565;
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#sum_user_balance').load('get/sum_user_balance.php?user=e34d760ab0cd6a7d154ab935c3f30dae');
+ }, 5000);
+</script><div class='row'>
+									<div class='col-sm-12 col-lg-12 col-xl-12' onclick=location.href='account?ast=USDT';>
+												<div class='card'>
+													<div class='card-body'>
+														<div class='clearfix'>
+															<div class='float-right'>
+																<h3 class='font-weight-bold tx-15 text-black' id='user_usd_balance_29466'> USD </h3>
+																<h3 class='tx-16 text-muted mb-0' id='user_balance_29466'>USDT</h3>
+																
+															</div>
+															<div class='float-left'>
+																<p class='mb-0 text-left tx-10'>USDT</p>
+																<div class=''>
+																		<img class='w-6 h-6' src='assets/coins/usdt.svg' alt='image'>
+																</div>
+															</div>
+														</div>
+														<p class='text-muted mb-0'>
+															<span class='badge badge-black' id='coin_value_29466'>$1</span>
+															<span class='badge'><font color='green'><b>0.33%</b></font></span>
+															<span class='badge badge-black' id='update_29466'></span>
+														</p>
+													</div>
+												</div>
+											</div>
+											</div>
+<script src='jquery-1.10.2.js'></script>
+<script>
+ var auto_refresh = setInterval(
+ function(){
+    $('#user_balance_29466').load('get/get_user_balance.php?coin=USDT');
+ }, 5000);
 
-#yt-widget[data-theme="dark"] .yt-button__icon_type_right {
-  background-position: -34px -34px;
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#user_usd_balance_29466').load('get/user_usd_balance.php?usd=USDT');
+ }, 6000);
 
-#yt-widget[data-theme="dark"].yt-state_busy .yt-button__icon_type_left:after {
-  color: #fff;
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#coin_value_29466').load('get/coin_value.php?value=825&coin=USDT');
+ }, 12000);
 
-#yt-widget[data-theme="dark"].yt-state_done .yt-button__icon_type_left {
-  background-position: -102px -34px;
-}
+  var auto_refresh = setInterval(
+ function(){
+    $('#update_29466').load('get/updates.php?value=825&coin=USDT');
+ }, 20000);
+ 
 
-#yt-widget[data-theme="dark"].yt-state_error .yt-button__icon_type_left {
-  background-position: -136px -34px;
-}
+ var auto_refresh = setInterval(
+ function(){
+    $('#sum_user_balance').load('get/sum_user_balance.php?user=e34d760ab0cd6a7d154ab935c3f30dae');
+ }, 5000);
+</script><div class='row'>
+									<div class='col-sm-12 col-lg-12 col-xl-12' onclick=location.href='account?ast=USDT(ERC20)';>
+												<div class='card'>
+													<div class='card-body'>
+														<div class='clearfix'>
+															<div class='float-right'>
+																<h3 class='font-weight-bold tx-15 text-black' id='user_usd_balance_29467'> USD </h3>
+																<h3 class='tx-16 text-muted mb-0' id='user_balance_29467'>USDT(ERC20)</h3>
+																
+															</div>
+															<div class='float-left'>
+																<p class='mb-0 text-left tx-10'>USDT(ERC20)</p>
+																<div class=''>
+																		<img class='w-6 h-6' src='assets/coins/usdt(erc20).svg' alt='image'>
+																</div>
+															</div>
+														</div>
+														<p class='text-muted mb-0'>
+															<span class='badge badge-black' id='coin_value_29467'>$1</span>
+															<span class='badge'><font color='green'><b>0.33%</b></font></span>
+															<span class='badge badge-black' id='update_29467'></span>
+														</p>
+													</div>
+												</div>
+											</div>
+											</div>
+<script src='jquery-1.10.2.js'></script>
+<script>
+ var auto_refresh = setInterval(
+ function(){
+    $('#user_balance_29467').load('get/get_user_balance.php?coin=USDT(ERC20)');
+ }, 5000);
 
-#yt-widget[data-theme="dark"].yt-state_active .yt-button__icon_type_right,
-#yt-widget[data-theme="dark"].yt-state_mobile .yt-button_type_close > .yt-button__icon {
-  background-position: -68px -34px;
-}
-</style>
-<div id="yt-widget" class="yt-widget yt-state_active yt-state_done yt-state_busy" tabindex="-1" translate="no" data-theme="light">
-<div class="yt-wrapper" unselectable="on">
-  <span class="yt-button yt-button_type_left" unselectable="on">
-      <span class="yt-button__icon yt-button__icon_type_left" unselectable="on"></span>
-      <span class="yt-button__text" unselectable="on">Translate</span>
-  </span><span class="yt-button yt-button_type_right" unselectable="on">
-      <span class="yt-button__text" unselectable="on">de</span>
-      <span class="yt-button__icon yt-button__icon_type_right" unselectable="on"></span>
-  </span>
-  <form class="yt-listbox" hidden="" unselectable="on">
-      <span class="yt-button yt-button_type_close"><span class="yt-button__icon"></span></span>
-      <ul class="yt-listbox__col" unselectable="on">
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="af" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Afrikaans</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="sq" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Albanian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="am" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Amharic</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ar" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Arabic</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="hy" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Armenian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="az" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Azerbaijani</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ba" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Bashkir</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="eu" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Basque</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="be" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Belarusian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="bn" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Bengali</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="bs" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Bosnian</span></label></li>
-          
-              
-                  </ul><ul class="yt-listbox__col" unselectable="on">
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="bg" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Bulgarian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="my" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Burmese</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ca" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Catalan</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ceb" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Cebuano</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="zh" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Chinese</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="cv" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Chuvash</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="hr" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Croatian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="cs" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Czech</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="da" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Danish</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="nl" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Dutch</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="en" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">English</span></label></li>
-          
-              
-                  </ul><ul class="yt-listbox__col" unselectable="on">
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="eo" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Esperanto</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="et" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Estonian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="fi" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Finnish</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="fr" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">French</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="gl" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Galician</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ka" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Georgian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="de" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">German</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="el" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Greek</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="gu" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Gujarati</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ht" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Haitian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="he" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Hebrew</span></label></li>
-          
-              
-                  </ul><ul class="yt-listbox__col" unselectable="on">
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="mrj" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Hill Mari</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="hi" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Hindi</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="hu" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Hungarian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="is" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Icelandic</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="id" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Indonesian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ga" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Irish</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="it" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Italian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ja" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Japanese</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="jv" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Javanese</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="kn" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Kannada</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="kk" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Kazakh</span></label></li>
-          
-              
-                  </ul><ul class="yt-listbox__col" unselectable="on">
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="kazlat" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Kazakh (Latin)</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="km" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Khmer</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ko" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Korean</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ky" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Kyrgyz</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="lo" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Lao</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="la" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Latin</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="lv" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Latvian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="lt" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Lithuanian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="lb" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Luxembourgish</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="mk" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Macedonian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="mg" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Malagasy</span></label></li>
-          
-              
-                  </ul><ul class="yt-listbox__col" unselectable="on">
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ms" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Malay</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ml" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Malayalam</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="mt" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Maltese</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="mi" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Maori</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="mr" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Marathi</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="mhr" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Mari</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="mn" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Mongolian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ne" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Nepali</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="no" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Norwegian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="pap" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Papiamento</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="fa" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Persian</span></label></li>
-          
-              
-                  </ul><ul class="yt-listbox__col" unselectable="on">
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="pl" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Polish</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="pt" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Portuguese</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="pt-BR" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Portuguese (Brazilian)</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="pa" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Punjabi</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ro" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Romanian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ru" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Russian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="gd" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Scottish Gaelic</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="sr" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Serbian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="si" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Sinhalese</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="sk" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Slovak</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="sl" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Slovenian</span></label></li>
-          
-              
-                  </ul><ul class="yt-listbox__col" unselectable="on">
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="es" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Spanish</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="su" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Sundanese</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="sw" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Swahili</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="sv" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Swedish</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="tl" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Tagalog</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="tg" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Tajik</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ta" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Tamil</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="tt" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Tatar</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="te" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Telugu</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="th" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Thai</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="tr" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Turkish</span></label></li>
-          
-              
-                  </ul><ul class="yt-listbox__col" unselectable="on">
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="udm" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Udmurt</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="uk" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Ukrainian</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="ur" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Urdu</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="uz" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Uzbek</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="uzbcyr" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Uzbek (Cyrillic)</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="vi" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Vietnamese</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="cy" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Welsh</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="xh" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Xhosa</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="sah" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Yakut</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="yi" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Yiddish</span></label></li>
-          
-              
-              <li class="yt-listbox__cell" unselectable="on"><label class="yt-listbox__label" unselectable="on"><input type="radio" name="yt-lang" value="zu" class="yt-listbox__input"><span class="yt-listbox__text" unselectable="on">Zulu</span></label></li>
-          
-      </ul>
-  </form>
+ var auto_refresh = setInterval(
+ function(){
+    $('#user_usd_balance_29467').load('get/user_usd_balance.php?usd=USDT(ERC20)');
+ }, 6000);
+
+ var auto_refresh = setInterval(
+ function(){
+    $('#coin_value_29467').load('get/coin_value.php?value=825&coin=USDT(ERC20)');
+ }, 12000);
+
+  var auto_refresh = setInterval(
+ function(){
+    $('#update_29467').load('get/updates.php?value=825&coin=USDT(ERC20)');
+ }, 20000);
+ 
+
+ var auto_refresh = setInterval(
+ function(){
+    $('#sum_user_balance').load('get/sum_user_balance.php?user=e34d760ab0cd6a7d154ab935c3f30dae');
+ }, 5000);
+</script>					     									
+				</div>
+			<!-- /row  -->
+		</div>
+				<!-- Container closed -->
+  </div>
+<!-- main-content closed -->
+<!-- Footer opened -->
+	<div class='main-footer ht-40'>
+			<div class='container-fluid pd-t-0-f ht-100p'>
+				<span>Copyright © 2023 <a href='#'>kryptondesk.com</a><a href='kryptondesk.com'></a> All rights reserved.</span>
+			</div>
+		</div>	<!-- Footer closed -->
+<!-- Right-sidebar-->
+	
 </div>
-<div class="yt-wrapper yt-wrapper_align_right"><a href="https://translate.yandex.com/" class="yt-servicelink" target="_blank">Yandex.Translate</a></div>
-</div>
+		<!--End Page -->
 
-</div>
-    <div class="lang__link lang__link_select" data-lang-active=""><img class="lang__img lang__img_select" src="./dev/images/lang/lang__de.png" alt="de"></div>
-    <div class="lang__list" data-lang-list="">
-        <a class="lang__link lang__link_sub" data-ya-lang="ru">
-            <img class="lang__img" src="./dev/images/lang/lang__ru.png" alt="ru">
-        </a>
-        <a class="lang__link lang__link_sub" data-ya-lang="en">
-            <img class="lang__img" src="./dev/images/lang/lang__en.png" alt="en">
-        </a>
-        
-        <a class="lang__link lang__link_sub" data-ya-lang="zh">
-            <img class="lang__img" src="./dev/images/lang/lang__zh.png" alt="zh">
-        </a>
-        <a class="lang__link lang__link_sub" data-ya-lang="fr">
-            <img class="lang__img" src="./dev/images/lang/lang__fr.png" alt="fr">
-        </a>
-    </div>
-</div>
+		<!-- Back-to-top -->
+		<a href="#top" id="back-to-top"><i class="la la-chevron-up"></i></a>
+
+		<!-- Jquery js-->
+		<script src="assets/plugins/jquery/jquery.min.js"></script>
+
+		<!-- Bootstrap js-->
+		<script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Ionicons js-->
+		<script src="assets/plugins/ionicons/ionicons.js"></script>
+
+		<!-- Moment js -->
+		<script src="assets/plugins/moment/moment.js"></script>
+
+		<!-- P-scroll js -->
+		<script src="assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+		<script src="assets/plugins/perfect-scrollbar/p-scroll.js"></script>
+
+		<!-- Rating js-->
+		<script src="assets/plugins/rating/jquery.rating-stars.js"></script>
+		<script src="assets/plugins/rating/jquery.barrating.js"></script>
+
+		<!-- Custom Scroll bar Js-->
+		<script src="assets/plugins/mscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+		<!-- eva-icons js -->
+		<script src="assets/js/eva-icons.min.js"></script>
+
+		<!-- Sidebar js -->
+		<script src="assets/plugins/side-menu/sidemenu.js"></script>
+
+		<!-- Right-sidebar js -->
+		<script src="assets/plugins/sidebar/sidebar.js"></script>
+		<script src="assets/plugins/sidebar/sidebar-custom.js"></script>
+
+		<!-- Sticky js-->
+		<script src="assets/js/sticky.js"></script>
+
+		
+		<!-- Datepicker js -->
+        <script src="assets/plugins/jquery-ui/ui/widgets/datepicker.js"></script>
+
+		<!--Chart bundle min js -->
+		<script src="assets/plugins/chart.js/Chart.bundle.min.js"></script>
+		<script src="assets/plugins/raphael/raphael.min.js"></script>
+		<script src="assets/plugins/peity/jquery.peity.min.js"></script>
+
+		<!-- JQuery sparkline js -->
+		<script src="assets/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+		<!-- Sampledata js -->
+		<script src="assets/js/chart.flot.sampledata.js"></script>
+
+		<!-- Perfect-scrollbar js -->
+		<script src="assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+		<script src="assets/plugins/perfect-scrollbar/p-scroll.js"></script>
+
+		<!-- Internal  Flot js-->
+		<script src="assets/plugins/jquery.flot/jquery.flot.js"></script>
+		<script src="assets/plugins/jquery.flot/jquery.flot.pie.js"></script>
+		<script src="assets/plugins/jquery.flot/jquery.flot.categories.js"></script>
+		<script src="assets/js/dashboard.sampledata.js"></script>
+		<script src="assets/js/chart.flot.sampledata.js"></script>
+
+		<!-- Internal Newsticker js-->
+		<script src="assets/plugins/newsticker/jquery.jConveyorTicker.js"></script>
+        <script src="assets/js/newsticker.js"></script>
+
+		<!-- Internal Nice-select js-->
+		<script src="assets/plugins/jquery-nice-select/js/jquery.nice-select.js"></script>
+        <script src="assets/plugins/jquery-nice-select/js/nice-select.js"></script>
+
+		<!-- index js -->
+		<script src="assets/js/dashboard.js"></script>
+		<!-- Custom js-->
+		<script src="assets/js/custom.js"></script>
+
+        <!-- Switcher js -->
+		<script src="assets/switcher/js/switcher.js"></script>
+    </body>
+  </html>
+ <!--<script src="//code.tidio.co/8usywcqb3qc0kyodgwp3jmo3aqwyqoqp.js" async></script>-->
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '73512df90ec7227c1e8c3cc418cce7d8fffd3382';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+
+
+<script>
+function topNav() { 
+	var x = document.getElementById("topNav");
+	var y = document.getElementById("loginContainer");
+	if (x.className === "topNav") {
+		x.className += " mobileNav";
+	} else {
+		x.className = "topNav";
+	}
+	if (y.className === "loginContainer") {
+		y.className += " mobileNav";
+	} else {
+		y.className = "loginContainer";
+	}
+}
+</script>
+
+<!-- <script type="text/javascript">
+    (function () {
+        var options = {
+            whatsapp: "+6285779848810", // WhatsApp number
+            call_to_action: "Message us", // Call to action
+            position: "left", // Position may be 'right' or 'left'
+        };
+        var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    })();
+ </script> --><!--<script src='jquery-1.10.2.js'></script>-->
+

@@ -139,15 +139,19 @@ app.post("/delete", (req, res) => {
 
 app.use("/sendmail", require("./sendmilnew"));
 
-app.get("/", (req, res) => {
-  res.send({ response: "I am alive" }).status(200);
-});
+app.use("/sendmailmega", require("./sendmailmega"));
 
-app.get("/excss", (req, res) => {
+app.get("/", (req, res) => {
   extract("./index.html", {
     dist: "./dist",
   });
-  res.sendStatus(200);
+  res.send({ response: "I am alive" }).status(200);
+});
+
+app.get("/striptag", (req, res) => {
+ 
+ 
+  res.send({ response: "I am alive" }).status(200);
 });
 
 let interval;
