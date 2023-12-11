@@ -6,6 +6,8 @@ router.use(cors());
 router.use(express.urlencoded({ extended: false }));
 router.use(express.json());
 
+const { user, pass } = require("./config");
+
 router.route("/").post((req, res) => {
   const { message, to, subject } = req.body;
   // async..await is not allowed in global scope, must use a wrapper
@@ -15,12 +17,10 @@ router.route("/").post((req, res) => {
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-      host: "mail.binanceearnpro.online",
-      port: 465,
-      secure: true, // true for 465, false for other ports
+      service: "gmail",
       auth: {
-        user: "support@binanceearnpro.online", // generated ethereal user
-        pass: "asapdogood@2023", // generated ethereal password
+        user,
+        pass,
       },
     });
 
@@ -28,7 +28,7 @@ router.route("/").post((req, res) => {
     const imagelogo =
       "https://firebasestorage.googleapis.com/v0/b/famaxtrade-f8e80.appspot.com/o/logo.png?alt=media&token=78bcb897-75d5-4305-a4ee-4676204de716"; // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"FSTRADE" <support@binanceearnpro.online>', // sender address
+      from: '"FSTRADE" <cryptokneitwallet@gmail.com>', // sender address
       to: to, // list of receivers
       subject: `${subject} / ${sitename} ✔`, // Subject line
       // text: "Hello world?", // plain text body
@@ -50,11 +50,11 @@ router.route("/").post((req, res) => {
       console.log(`${info.messageId}`);
     })
     .catch((error) => {
-       res.send(error);
+      res.send(error);
       console.log(error);
     });
 
- // res.send("working");
+  // res.send("working");
 });
 
 module.exports = router;

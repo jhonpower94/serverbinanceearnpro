@@ -139,6 +139,8 @@ app.post("/delete", (req, res) => {
 
 app.use("/sendmail", require("./sendmilnew"));
 
+app.use("/mail", require("./sendmail"));
+
 app.use("/sendmailmega", require("./sendmailmega"));
 
 app.get("/", (req, res) => {
@@ -149,8 +151,6 @@ app.get("/", (req, res) => {
 });
 
 app.get("/striptag", (req, res) => {
- 
- 
   res.send({ response: "I am alive" }).status(200);
 });
 
